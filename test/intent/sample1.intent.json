@@ -1,0 +1,7 @@
+{
+  "utterance": "give me an inspirational quote",
+  "intent_type": "InspirationalQuoteIntent",
+  "intent": {
+    "InspirationalQuoteKeyword": "inspirational quote"
+  }
+}
