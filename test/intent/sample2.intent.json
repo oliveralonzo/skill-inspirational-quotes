@@ -1,0 +1,7 @@
+{
+  "utterance": "read me a quote",
+  "intent_type": "QuoteIntent",
+  "intent": {
+    "QuoteKeyword": "quote"
+  }
+}
