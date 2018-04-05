@@ -37,13 +37,11 @@ class InspirationalQuotesSkill(MycroftSkill):
     def intialize(self):
         self.load_data_files(dirname(__file__))
 
-        inspirational_quote_intent = IntentBuilder("InspirationalQuoteIntent")\
-                                     .require("InspirationalQuoteKeyword").build()
+        inspirational_quote_intent = IntentBuilder("InspirationalQuoteIntent").require("InspirationalQuoteKeyword").build()
         self.register_intent(inspirational_quote_intent,
                              self.handle_inspirational_quote_intent)
 
-        quote_intent = IntentBuilder("QuoteIntent")\
-                                     .require("QuoteKeyword").build()
+        quote_intent = IntentBuilder("QuoteIntent").require("QuoteKeyword").build()
         self.register_intent(quote_intent,
                              self.handle_quote_intent)
 
