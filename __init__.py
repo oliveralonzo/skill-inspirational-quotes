@@ -74,3 +74,6 @@ class InspirationalQuotesSkill(MycroftSkill):
 
     def stop(self):
         pass
+
+def create_skill():
+    return InspirationalQuotesSkill()
