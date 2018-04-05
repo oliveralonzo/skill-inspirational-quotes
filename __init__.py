@@ -40,19 +40,37 @@ class InspirationalQuotesSkill(MycroftSkill):
         self.register_intent(inspirational_quote_intent,
                              self.handle_inspirational_quote_intent)
 
-    # Defines Mycroft's behavior for the skill's intent
+        quote_intent = IntentBuilder("QuoteIntent")\
+                                     .require("QuoteKeyword").build()
+        self.register_intent(quote_intent,
+                             self.handle_quote_intent)
+
+    # Defines Mycroft's behavior for the inspirational quote intent
     def handle_inspirational_quote_intent(self, message):
-        try: 
+        quote, author = get_quote()
+        if quote and author:
+            self.speak_dialog("inspirational.quote", data={'quote': quote,'author':author})
+        else:
+            self.speak_dialog("not.found")
+
+    # Defines Mycroft's behavior for the quote intent
+    def handle_quote_intent(self, message):
+        quote, author = get_quote()
+        if quote and author:
+            self.speak_dialog("quote", data={'quote': quote,'author':author})
+        else:
+            self.speak_dialog("not.found")
+
+    def get_quote():
+        try:
             parameters = {'method': 'getQuote', 'format': 'json', 'lang':'en'}
             url = "http://api.forismatic.com/api/1.0/"
-            response = requests.get(url, params=parameters)
-            quoteObject = response.json()
-            quote = quoteObject["quoteText"].strip(' "\'\t\r\n')
-            author = quoteObject["quoteAuthor"].strip(' "\'\t\r\n')
-            self.speak_dialog("inspirational.quote", data={'quote': quote,
-                                                           'author': author})
+            response = requests.get(url, params=parameters).json()
+            quote = response["quoteText"].strip(' "\'\t\r\n')
+            author = response["quoteAuthor"].strip(' "\'\t\r\n')
+            return quote, author
         except:
-            self.speak_dialog("not.found")
+            return "", ""
 
     def stop(self):
         pass
