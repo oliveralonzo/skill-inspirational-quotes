@@ -66,8 +66,8 @@ class InspirationalQuotesSkill(MycroftSkill):
             parameters = {'method': 'getQuote', 'format': 'json', 'lang':'en'}
             url = "http://api.forismatic.com/api/1.0/"
             response = requests.get(url, params=parameters).json()
-            quote = response["quoteText"].strip(' "\'\t\r\n')
-            author = response["quoteAuthor"].strip(' "\'\t\r\n')
+            quote = response["quoteText"].strip(' ."\'\t\r\n')
+            author = response["quoteAuthor"].strip(' ."\'\t\r\n')
             return quote, author
         except:
             return "", ""
