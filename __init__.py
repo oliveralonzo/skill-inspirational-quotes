@@ -47,7 +47,7 @@ class InspirationalQuotesSkill(MycroftSkill):
 
     # Defines Mycroft's behavior for the inspirational quote intent
     def handle_inspirational_quote_intent(self, message):
-        quote, author = get_quote()
+        quote, author = self.get_quote()
         if quote and author:
             self.speak_dialog("inspirational.quote", data={'quote': quote,'author':author})
         else:
@@ -55,7 +55,7 @@ class InspirationalQuotesSkill(MycroftSkill):
 
     # Defines Mycroft's behavior for the quote intent
     def handle_quote_intent(self, message):
-        quote, author = get_quote()
+        quote, author = self.get_quote()
         if quote and author:
             self.speak_dialog("quote", data={'quote': quote,'author':author})
         else:
