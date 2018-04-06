@@ -34,7 +34,7 @@ class InspirationalQuotesSkill(MycroftSkill):
         super(InspirationalQuotesSkill, self).__init__(name="InspirationalQuotesSkill")
 
     # Loads the files needed, creates and registers intents
-    def intialize(self):
+    def initialize(self):
         self.load_data_files(dirname(__file__))
 
         inspirational_quote_intent = IntentBuilder("InspirationalQuoteIntent").require("InspirationalQuoteKeyword").build()
