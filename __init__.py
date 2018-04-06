@@ -61,7 +61,7 @@ class InspirationalQuotesSkill(MycroftSkill):
         else:
             self.speak_dialog("not.found")
 
-    def get_quote():
+    def get_quote(self):
         try:
             parameters = {'method': 'getQuote', 'format': 'json', 'lang':'en'}
             url = "http://api.forismatic.com/api/1.0/"
